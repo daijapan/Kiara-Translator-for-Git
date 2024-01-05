@@ -1,0 +1,133 @@
+<%- include('../partials/admin/header.ejs') %>
+
+<div class="p-20">
+  <div class="flex flex-col w-full py-10">
+    <h1 class="text-2xl">Documentation for the Application</h1>
+  </div>
+  
+  <div class="flex flex-col">
+    <div class="space-y-4">
+      <details class="group rounded-lg bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden" open>
+        <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
+          <h2 class="font-medium">How the Tables are structured:</h2>
+    
+          <span class="relative h-5 w-5 shrink-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+    
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </span>
+        </summary>
+    
+        <p class="mt-4 leading-relaxed text-gray-700">
+          We have two tables for this MVP application. 
+          <br/>
+          The first is: <b>Setting</b>, which is used to store the settings for the application.
+          <br/>
+          The Second is: <b>TranslationAction</b>. This table is used to store the translation actions that are performed.
+        </p>
+        <p class="mt-4 leading-relaxed text-gray-700">
+          The relation is: <b>Setting</b> has many <b>TranslationAction</b>.
+          <br>
+          1. Setting will have attributes: 
+            <b>id</b>, <br>
+            <b>title</b>, <br>
+            <b>repoName</b>, <br>
+            <b>repoOwner</b>, <br>
+            <b>accessToken</b>, <br>
+            <b>openAiSecret</b> <br>
+            
+        </p>
+        <p>
+          2. TranslationAction will have attributes: <br>
+            <b>id</b>, <br>
+            <b>settingId</b>, <br>
+            <b>title</b>, <br>
+            <b>language</b>, <br>
+            <b>delay (In Minute; Example: 5 )</b>, <br>
+            <b>nextRun (Time)</b> <br>
+        </p>
+      </details>
+    
+      <details class="group rounded-lg bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
+          <h2 class="font-medium">How all are tied up:</h2>
+    
+          <span class="relative h-5 w-5 shrink-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="absolute inset-0 opacity-100 group-open:opacity-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+    
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="absolute inset-0 opacity-0 group-open:opacity-100"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </span>
+        </summary>
+    
+        <p class="mt-4 leading-relaxed text-gray-700">
+          Once you start the appliction, 
+          <br/>
+          1. It will check if there are any translation actions that are due to run.
+          <br/>
+          2. If there are any, it will run the translation action.
+          <br/>
+          3. Once the translation action is completed, it will update the nextRun time for the translation action.
+          <br/>
+          4. It will then check if there are any translation actions that are due to run.
+          <br/>
+          This will continue to run until you stop the application.
+        </p>
+      </details>
+    </div>
+  </div>
+</div>
+
+
+<%- include('../partials/admin/footer.ejs') %>

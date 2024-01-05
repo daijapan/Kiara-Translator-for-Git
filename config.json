@@ -1,0 +1,16 @@
+{
+  "development": {
+    "dialect": "postgres",
+    "host": "db",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "translation_dev",
+    "define": {
+      "timestamps": false
+    }
+  },
+  "test": {
+  },
+  "production": {
+  }
+}

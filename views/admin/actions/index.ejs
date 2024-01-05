@@ -1,0 +1,13 @@
+<!-- Header -->
+<%- include('../../partials/admin/header.ejs') %>
+
+<div class="m-10">
+    <!-- Listing for the actions data -->
+    <% if (actions && actions.length > 0) { %>
+        <%- include('../../partials/admin/actionList.ejs', { actions }) %>
+        
+    <% } %>
+    
+</div>
+<!-- Footer -->
+<%- include('../../partials/admin/footer.ejs') %>

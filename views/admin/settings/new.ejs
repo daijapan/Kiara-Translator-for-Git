@@ -1,0 +1,156 @@
+<!-- Header partial -->
+<%- include('../../partials/admin/header.ejs') %>
+
+<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-lg text-center">
+      <h1 class="text-2xl font-bold sm:text-3xl"><%= locals.title %> for the New Application.</h1>
+  
+      <p class="mt-4 text-gray-500">
+        This settings will be needed for the translation work smoothly.
+      </p>
+    </div>
+
+    <% if (locals.errors && locals.errors.length > 0) { %>
+      <div class="mt-8 mx-auto max-w-md text-center">
+        <ul class="space-y-4">
+          <% locals.errors.forEach(function(error) { %>
+            <li class="text-sm text-red-500"><%= error %></li>
+          <% }); %>
+        </ul>
+      </div>
+    <% } %>
+  
+    <form action="/web/admin/settings/create" method="post" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+      <div>
+        <label for="title" class="sr-only">Title</label>
+        <span class="text-xs font-medium">Title</span>
+        <div class="relative">
+          <input
+            name="title"
+            type="text"
+            class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter title"
+            required
+          />
+        </div>
+      </div>
+      
+      <div>
+        <label for="repoOwner" class="sr-only">Repo Owner Username</label>
+        <span class="text-xs font-medium">Repo Owner Username</span>
+        <div class="relative">
+          <input
+            name="repoOwner"
+            type="text"
+            class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter repo owner"
+            required
+          />
+        </div>
+      </div>
+      
+      <div>
+        <label for="repoName" class="sr-only">Repo Name</label>
+        <span class="text-xs font-medium">Repo Name</span>
+        <div class="relative">
+          <input
+            name="repoName"
+            type="text"
+            class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter repo name"
+            required
+          />
+        </div>
+      </div>
+  
+      <div>
+        <label for="accessToken" class="sr-only">Github Personal Access Token</label>
+        <span class="text-xs font-medium">Github Personal Access Token</span>
+        <div class="relative">
+          <input
+            name="accessToken"
+            type="text"
+            class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter Github Personal Access Token"
+            required
+          />
+  
+          <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <label for="openAiSecret" class="sr-only">Open AI Secret Token</label>
+        <span class="text-xs font-medium">Open AI Secret Token</span>
+        <div class="relative">
+          <input
+            name="openAiSecret"
+            type="text"
+            class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter Open AI Secret Token"
+            required
+          />
+  
+          <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+  
+      <div class="flex items-center justify-between">
+        <p class="text-sm text-gray-500">
+          Need Help?
+          <a class="underline" href="/documentation">Check documentation</a>
+        </p>
+  
+        <button
+          type="submit"
+          class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+        >
+          Create Setting
+        </button>
+      </div>
+    </form>
+  </div>
+<!-- footer -->
+<%- include('../../partials/admin/footer.ejs') %>
