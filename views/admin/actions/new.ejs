@@ -1,0 +1,96 @@
+<!-- Header partial -->
+<%- include('../../partials/admin/header.ejs') %>
+
+<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-lg text-center">
+      <h1 class="text-2xl font-bold sm:text-3xl">Action for the Setting</h1>
+  
+      <p class="mt-4 text-gray-500">
+        This Action will be needed for the translation work smoothly.
+      </p>
+    </div>
+
+    <% if (locals.errors && locals.errors.length > 0) { %>
+      <div class="mt-8 mx-auto max-w-md text-center">
+        <ul class="space-y-4">
+          <% locals.errors.forEach(function(error) { %>
+            <li class="text-sm text-red-500"><%= error %></li>
+          <% }); %>
+        </ul>
+      </div>
+    <% } %>
+  
+    <form action="/web/admin/actions/create" method="post" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+      <div>
+        <label for="language" class="sr-only">Language</label>
+        <span class="text-xs font-medium">Language to translated to</span>
+        <div class="relative">
+          <input
+            name="language"
+            type="text"
+            class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter language to translate. example: 'Japanese'"
+            required
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="title" class="sr-only">Title</label>
+        <span class="text-xs font-medium">Title</span>
+        <div class="relative">
+          <input
+            name="title"
+            type="text"
+            class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Title for the action. example: 'Translate to Japanese for Repo"
+            required
+          />
+        </div>
+      </div>
+      
+      <div>
+        <label for="settingId" class="sr-only">Select Repo Name</label>
+        <span class="text-xs font-medium">Select Repo Name - Repo Owner</span>
+        <div class="relative">
+          <select name="settingId" class="p-3 border border-gray-200 rounded-lg m-0">
+            <% settings.forEach(setting => { %>
+              <option value="<%= setting.id %>" class=""><%= setting.repoName %>-<%= setting.repoOwner %></option>
+            <% }) %>            
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="delay" class="sr-only">Set Timer</label>
+        <span class="text-xs font-medium">Set the timer: (Default: 5 mins)</span>
+        <div class="relative">
+          <input
+            name="delay"
+            type="number"
+            class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter time delay to run the action in mins: example: '5'"
+            required
+          />
+        </div>
+      </div>
+  
+      
+  
+      <div class="flex items-center justify-between">
+        <p class="text-sm text-gray-500">
+          Need Help?
+          <a class="underline" href="/documentation">Check documentation</a>
+        </p>
+  
+        <button
+          type="submit"
+          class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+        >
+          Create Action
+        </button>
+      </div>
+    </form>
+  </div>
+<!-- footer -->
+<%- include('../../partials/admin/footer.ejs') %>

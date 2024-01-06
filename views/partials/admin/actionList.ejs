@@ -1,0 +1,34 @@
+<div class="overflow-x-auto">
+    <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+      <thead class="ltr:text-left rtl:text-right">
+        <tr>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Title</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Repo Name</th>
+          
+          <th class="px-4 py-2"></th>
+        </tr>
+      </thead>
+  
+      <tbody class="divide-y divide-gray-200">
+        <% actions.forEach(action => { %>
+          <tr class="text-center">
+            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"><%= action.title %></td>
+            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"><%= action.Setting.repoName %></td>
+            
+            
+            <td class="whitespace-nowrap px-4 py-2">
+              <a
+                href="#"
+                class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700"
+              >
+                Delete <sup>( Disabled Now )</sup>
+              </a>
+            </td>
+          </tr>
+        <% }) %>
+          
+        
+        
+      </tbody>
+    </table>
+  </div>
